@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: bisque;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+  padding: 8px 16px;
+  min-height: calc(100vh - 200px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  background-color: burlywood;
+  border-radius: 3px;
+  margin-top: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header .logo {
+  flex: 0 auto;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin-right: 20px;
+}
+
+header .logo a {
+  color: rgb(16, 1, 1);
+  text-decoration: none;
+  font-weight: 700;
+}
+header nav {
+  flex: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+header .user {
+  margin-left: auto;
+  flex: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header .user button {
+  color: white;
+  padding: 8px 16px;
+  background-color: rgb(49, 95, 180);
+  border-radius: 3px;
+  border: 0px;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+nav.main-navigation {
   display: flex;
   flex-direction: column;
+}
+
+nav.main-navigation ul {
+  flex: 1;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+nav.main-navigation ul li {
+  flex: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav.main-navigation ul li a {
+  color: rgb(48, 5, 5);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  background-color: burlywood;
+  border-radius: 3px;
+  margin-bottom: 16px;
+  min-height: 120px;
+}
+
+nav.secondary-navigation ul {
+  flex: 1;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 16px;
+  gap: 16px;
+}
+
+nav.secondary-navigation ul li {
+  flex: 0 auto;
+}
+
+nav.secondary-navigation ul li a {
+  color: rgb(48, 5, 5);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer .logo {
+  flex: 0 auto;
+  display: flex;
+  align-items: top;
+  align-content: center;
+  margin-right: 20px;
+  padding-top: 16px;
+}
+
+footer .logo a {
+  color: rgb(16, 1, 1);
+  text-decoration: none;
+  font-weight: 700;
 }
