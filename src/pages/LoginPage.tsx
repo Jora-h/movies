@@ -17,13 +17,18 @@ const LoginPage = () => {
 
   return (
     <div>
-      <h1>Login to movies app</h1>
-      <Form method="post" replace>
+      <Form method="post" replace className="login-form">
+        <h1>Sign in</h1>
         <input type="hidden" name="redirectTo" value={from} />
-        <label>
-          Username: <input name="username" />
+        <label className="form-field">
+          username
+          <input name="username" />
         </label>
-        <button type="submit" disabled={isLoggingIn}>
+        <label className="form-field">
+          password
+          <input name="password" />
+        </label>
+        <button type="submit" disabled={isLoggingIn} className="form-button">
           {isLoggingIn ? "Logging in..." : "Login"}
         </button>
         {actionData && actionData.error ? (

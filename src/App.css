@@ -133,3 +133,39 @@ footer .logo a {
   text-decoration: none;
   font-weight: 700;
 }
+
+.login-form {
+  margin: 0 auto;
+  margin-top: 25px;
+  max-width: 360px;
+  width: 100%;
+  background-color: burlywood;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form .form-field {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.login-form .form-field input {
+  flex: 1;
+  border-radius: 3px;
+  border: 1px solid rgb(184, 136, 72);
+  padding: 8px;
+}
+
+.login-form button {
+  color: white;
+  padding: 8px 16px;
+  background-color: rgb(49, 95, 180);
+  border-radius: 3px;
+  border: 0px;
+  cursor: pointer;
+  font-weight: 700;
+}
