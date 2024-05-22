@@ -12,6 +12,7 @@ import HomePage from "./pages/HomePage";
 import CategoryPage from "./pages/CategoryPage";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import MoviePage from "./pages/MoviePage";
+import "./App.css";
 
 const router = createBrowserRouter([
   {
