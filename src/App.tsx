@@ -3,11 +3,10 @@ import {
   createBrowserRouter,
   redirect,
 } from "react-router-dom";
-import { fakeAuthProvider } from "./auth";
+import { authProvider } from "./auth";
 import Layout from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
 import { loginLoader, protectedLoader } from "./utils/loaders";
-import { loginAction } from "./utils/actions";
 import HomePage from "./pages/HomePage";
 import CategoryPage from "./pages/CategoryPage";
 import BookmarkedPage from "./pages/BookmarkedPage";
@@ -18,15 +17,11 @@ const router = createBrowserRouter([
   {
     id: "root",
     path: "/",
-    loader() {
-      return { user: fakeAuthProvider.username };
-    },
     Component: Layout,
     children: [
       {
         index: true,
         path: "login",
-        action: loginAction,
         loader: loginLoader,
         Component: LoginPage,
       },
@@ -55,8 +50,7 @@ const router = createBrowserRouter([
   {
     path: "/logout",
     async action() {
-      // We signout in a "resource route" that we can hit from a fetcher.Form
-      await fakeAuthProvider.signout();
+      await authProvider.signout();
       return redirect("/");
     },
   },
