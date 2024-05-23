@@ -169,3 +169,63 @@ footer .logo a {
   cursor: pointer;
   font-weight: 700;
 }
+
+.section {
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.section .section-heading {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(139, 93, 34);
+  display: flex;
+  flex-direction: row;
+}
+
+.section .section-heading h2 {
+  margin: 0;
+}
+
+.section .section-heading input.section-search {
+  flex: 0 auto;
+  margin-left: auto;
+  border-radius: 3px;
+  border: 1px solid rgb(184, 136, 72);
+  padding: 8px;
+}
+
+.movie-thumbnail {
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+}
+
+.movie-info {
+  padding: 10px;
+}
+
+.movie-title {
+  font-size: 18px;
+  margin: 0 0 5px;
+}
+
+.movie-year,
+.movie-rating {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
