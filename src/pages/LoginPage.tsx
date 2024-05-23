@@ -1,41 +1,57 @@
-import {
-  Form,
-  useActionData,
-  useLocation,
-  useNavigation,
-} from "react-router-dom";
+import useSWRMutation, { MutationFetcher } from "swr/mutation";
+import { User } from "../types";
+
+const getLoginRequest: MutationFetcher<any, string, FormData> = async (
+  url,
+  { arg: body }
+) =>
+  fetch(url, {
+    method: "POST",
+    body,
+  }).then((res) => {
+    if (!res.ok) {
+      if (res.status === 401) {
+        throw new Error("Password or Username Wrong!");
+      }
+      throw new Error("Something went wrong!");
+    }
+    return res.json();
+  });
 
 const LoginPage = () => {
-  let location = useLocation();
-  let params = new URLSearchParams(location.search);
-  let from = params.get("from") || "/";
+  const {
+    trigger: login,
+    isMutating,
+    error,
+  } = useSWRMutation<User, Error, string, FormData>(
+    "/api/login",
+    getLoginRequest
+  );
 
-  let navigation = useNavigation();
-  let isLoggingIn = navigation.formData?.get("username") != null;
+  const handleLogin: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
 
-  let actionData = useActionData() as { error: string } | undefined;
+    const data = await login(formData);
+    if (data) {
+      window.location.reload();
+    }
+  };
 
   return (
-    <div>
-      <Form method="post" replace className="login-form">
-        <h1>Sign in</h1>
-        <input type="hidden" name="redirectTo" value={from} />
-        <label className="form-field">
-          username
-          <input name="username" />
-        </label>
-        <label className="form-field">
-          password
-          <input name="password" />
-        </label>
-        <button type="submit" disabled={isLoggingIn} className="form-button">
-          {isLoggingIn ? "Logging in..." : "Login"}
-        </button>
-        {actionData && actionData.error ? (
-          <p style={{ color: "red" }}>{actionData.error}</p>
-        ) : null}
-      </Form>
-    </div>
+    <form className="login-form" onSubmit={handleLogin}>
+      <h1>Sign in</h1>
+      <label className="form-field">
+        username
+        <input name="username" required />
+      </label>
+      <label className="form-field">
+        password
+        <input name="password" type="password" required />
+      </label>
+      <button type="submit">{isMutating ? "...Submitting" : "Login"}</button>
+      {error ? <p style={{ color: "red" }}>{error.message}</p> : null}
+    </form>
   );
 };
 
