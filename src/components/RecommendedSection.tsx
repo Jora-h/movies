@@ -1,10 +1,20 @@
+import useSWR from "swr";
+import Carousel from "./Carousel";
+import { fetcher } from "../utils/swr";
+
 const RecommendedSection = () => {
+  const { data, error, isLoading } = useSWR("/api/recommended", fetcher);
+
+  if (error) return <div>error</div>;
+  if (isLoading) return <div>..loading</div>;
+  if (!data || data?.length === 0) return <p>No movies found</p>;
+
   return (
-    <div className="section recommended">
+    <div className="section">
       <div className="section-heading">
-        <h2>Recommended for you</h2>
+        <h2>Recommended</h2>
       </div>
-      <div className="carousel">list of movies</div>
+      <Carousel data={data} />
     </div>
   );
 };
