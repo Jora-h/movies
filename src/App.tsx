@@ -12,6 +12,7 @@ import CategoryPage from "./pages/CategoryPage";
 import BookmarkedPage from "./pages/BookmarkedPage";
 import MoviePage from "./pages/MoviePage";
 import "./App.css";
+import SingleCategoryPage from "./pages/SingleCategoryPage";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
         path: "/category",
         loader: protectedLoader,
         Component: CategoryPage,
+      },
+      {
+        path: "/category/:categoryId",
+        loader: protectedLoader,
+        Component: SingleCategoryPage,
       },
       {
         path: "/bookmarked",
